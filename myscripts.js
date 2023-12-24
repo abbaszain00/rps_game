@@ -17,26 +17,22 @@ function getComputerChoice() {
   
 
  
-        function playRound(playerSelection, computerSelection) {
-            playerSelection = playerSelection.toLowerCase(); // Convert to lowercase
-            computerSelection = computerSelection.toLowerCase(); // Convert to lowercase
-          
-            if (playerSelection === computerSelection) {
-                return playRound(playerSelection, computerSelection);
-            } else if (playerSelection === "rock" && computerSelection === "paper") {
-              return "Computer";
-            } else if (playerSelection === "rock" && computerSelection === "scissors") {
-              return "Player";
-            } else if (playerSelection === "paper" && computerSelection === "rock") {
-              return "Player";
-            } else if (playerSelection === "paper" && computerSelection === "scissors") {
-              return "Computer";
-            } else if (playerSelection === "scissors" && computerSelection === "rock") {
-              return "Computer";
-            } else if (playerSelection === "scissors" && computerSelection === "paper") {
-              return "Player";
-            }
-          }
+  function playRound(playerSelection, computerSelection) {
+    playerSelection = playerSelection.toLowerCase();
+    computerSelection = computerSelection.toLowerCase();
+  
+    if (playerSelection === computerSelection) {
+      return "TIE";
+    } else if (
+      (playerSelection === "rock" && computerSelection === "scissors") ||
+      (playerSelection === "paper" && computerSelection === "rock") ||
+      (playerSelection === "scissors" && computerSelection === "paper")
+    ) {
+      return "Player";
+    } else {
+      return "Computer";
+    }
+  }
  
 for (let i = 0; i < 4; i++) {
 
@@ -58,9 +54,9 @@ if (result === "Player") {
 }
 }
 
-if (playerWins > computerWins) {
+if (playerScore > computerScore) {
     console.log("Congratulations! You won the best-of-five series!");
-  } else if (playerWins < computerWins) {
+  } else if (playerScore < computerScore) {
     console.log("Sorry, you lost the best-of-five series. Try again!");
   } else {
     console.log("The series ended in a tie. Try again!");
